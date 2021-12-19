@@ -21,11 +21,13 @@ export default function Weather() {
             </ul>
             <div className="row">
                 <div className="col-6">
-                    <img src="https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png" alt="Sunny"></img>
+                    <img src="https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png" alt="Sunny"
+                    height="60px" widith="60px" ></img>
                 16°C
                 </div>
                 <div className="col-6">
                     <ul>
+                        <h3>Details</h3>
                         <li>Feels like 14°</li>
                         <li>Humidity 9%</li>
                         <li>Visibility 16.10 km</li>
