@@ -23,7 +23,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
-  list-style: none;
+  /* list-style: none; */
 }
 
 .weatherDetails {
@@ -49,9 +49,36 @@ h3 {
 
 .temperature {
   font-weight: 400;
-  font-size: 50px;
+  font-size: 80px;
+  line-height: 64px;
+  position: relative;
+  top: 20px;
 }
 
 .unit {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  top: -24px;
+  margin-left: 5px;
+}
+
+.Weather img {
+  height: 64px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.description {
+  float: left;
+  line-height: 18px;
+}
+
+.descriptionDetail {
+  float: right;
+  overflow: auto;
+}
+
+.marker > ul li {
+  list-style-type: none;
 }

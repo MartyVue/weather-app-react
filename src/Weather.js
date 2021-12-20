@@ -21,18 +21,36 @@ export default function Weather() {
             </ul>
             <div className="row">
                 <div className="col-6">
-                    <img src="https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png" alt="Sunny"
-                    height="60px" widith="60px" />
-                <span className="temperature">16</span>
-                <span className="unit">°C</span>
+                    <div className="clearfix">
+                    <img src="https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png" 
+                    alt="Sunny"
+                    height="60px" 
+                    widith="60px" 
+                    className="float-left" 
+                    />
+                    <span className="temperature">16</span>
+                    <span className="unit">°C</span>
+                    </div>
                 </div>
-                <div className="col-6">
+                <div className="col-6 marker">
                     <ul>
                         <h3>Details</h3>
-                        <li className="weatherDetails">Feels like 14°</li>
-                        <li className="weatherDetails">Humidity 9%</li>
-                        <li className="weatherDetails">Visibility 16.10 km</li>
-                        <li className="weatherDetails">UV Index 2 (Low)</li>
+                        <li className="weatherDetails">
+                            <div className="description">Feels like</div>
+                            <div className="descriptionDetail">14°</div>
+                            </li>
+                        <li className="weatherDetails">
+                            <div className="description">Humidity</div>
+                            <div className="descriptionDetail">9%</div>
+                            </li>
+                        <li className="weatherDetails">
+                            <div className="description">Visibility</div>
+                            <div className="descriptionDetail">16.10 km</div>
+                        </li>
+                        <li className="weatherDetails">
+                            <div className="description">UV Index</div> 
+                        <   div className="descriptionDetail">2 (Low)</div>
+                        </li>
                     </ul>
                 </div>
             </div>
