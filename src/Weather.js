@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
+    const [ready, setReady] = useState(false);
+    const [weatherData, setWeatherData] = useState({});
     function handleResponse(response) {
         console.log(response.data);
+        setWeatherData({
+            temperature: response.data.main.temp,
+            FeelsLike: 14,
+            city: response.data.name
+        })
+     
+        setReady(true);
     }
 
-
-    const apiKey = "5ef560c2739fa62b5e22bb83083603a3";
-    let city="Broomfield";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}appid={apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    if (ready) {
     return (
         <div className="Weather">
             <form>
@@ -24,10 +29,10 @@ export default function Weather() {
                     </div>
                 </div>
             </form>
-            <h1>Bromfield</h1>
+            <h1>{weather.Data.city}</h1>
             <ul>
                 <li>Wednesday 07:00</li>
-                <li>Sunny</li>
+                <li>{weatherData.description}</li>
             </ul>
             <div className="row">
                 <div className="col-6">
@@ -38,7 +43,7 @@ export default function Weather() {
                     widith="60px" 
                     className="float-left" 
                     />
-                    <span className="temperature">16</span>
+                    <span className="temperature">{Math.round(weatherDate.temperature)}</span>
                     <span className="unit">°C</span>
                     </div>
                 </div>
@@ -46,7 +51,7 @@ export default function Weather() {
                     <ul>
                         <h3>Details</h3>
                         <li className="weatherDetails">
-                            <div className="description">Feels like</div>
+                            <div className="description">Feels like {weatherDate.FeelsLike}</div>
                             <div className="descriptionDetail">14°</div>
                             </li>
                         <li className="weatherDetails">
@@ -66,4 +71,12 @@ export default function Weather() {
             </div>
         </div>
     );
+    } else {
+   const apiKey = "5ef560c2739fa62b5e22bb83083603a3";
+    let city="Broomfield";
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}appid={apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+    
+    return "Loading...";
     }
+}
