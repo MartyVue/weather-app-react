@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div className="App">
     <div className="container">
-     <Weather />
+     <Weather defaultCity="Broomfield" />
      <footer>
        This project was coded by Martha Vue and is open-sourced on{" "}
      <a href="https://github.com/MartyVue/weather-app-react"
