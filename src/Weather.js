@@ -9,9 +9,10 @@ export default function Weather() {
         console.log(response.data);
         setWeatherData({
             temperature: response.data.main.temp,
-            FeelsLike: 14,
+            humidity: response.data.main.humidity,
+            feelsLike: response.data.feelsLike.speed,
             city: response.data.name
-        })
+        });
      
         setReady(true);
     }
@@ -29,7 +30,7 @@ export default function Weather() {
                     </div>
                 </div>
             </form>
-            <h1>{weather.Data.city}</h1>
+            <h1>{weatherData.city}</h1>
             <ul>
                 <li>Wednesday 07:00</li>
                 <li>{weatherData.description}</li>
@@ -43,7 +44,7 @@ export default function Weather() {
                     widith="60px" 
                     className="float-left" 
                     />
-                    <span className="temperature">{Math.round(weatherDate.temperature)}</span>
+                    <span className="temperature">{Math.round(weatherData.temperature)}</span>
                     <span className="unit">°C</span>
                     </div>
                 </div>
@@ -51,12 +52,12 @@ export default function Weather() {
                     <ul>
                         <h3>Details</h3>
                         <li className="weatherDetails">
-                            <div className="description">Feels like {weatherDate.FeelsLike}</div>
-                            <div className="descriptionDetail">14°</div>
+                            <div className="description">Feels like</div>
+                            <div className="descriptionDetail">{weatherData.feelsLike}</div>
                             </li>
                         <li className="weatherDetails">
                             <div className="description">Humidity</div>
-                            <div className="descriptionDetail">9%</div>
+                            <div className="descriptionDetail">{weatherData.humidity}</div>
                             </li>
                         <li className="weatherDetails">
                             <div className="description">Visibility</div>
