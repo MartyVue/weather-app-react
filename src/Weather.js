@@ -3,21 +3,25 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-    const [ready, setReady] = useState(false);
-    const [weatherData, setWeatherData] = useState({});
+    
+    const [weatherData, setWeatherData] = useState({ ready: false });
     function handleResponse(response) {
         console.log(response.data);
         setWeatherData({
+            ready: true,
             temperature: response.data.main.temp,
             humidity: response.data.main.humidity,
-            feelsLike: response.data.feelsLike.speed,
+            date: "Sunday 11:00",
+            description: response.data.weather[0].description,
+            iconUrl: "https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png",
+            feels_like: response.data.main.feels_like,
+            visibility: response.data.visibility,
+            wind: response.data.wind.speed,
             city: response.data.name
         });
-     
-        setReady(true);
     }
 
-    if (ready) {
+    if (weatherData.ready) {
     return (
         <div className="Weather">
             <form>
@@ -32,14 +36,14 @@ export default function Weather() {
             </form>
             <h1>{weatherData.city}</h1>
             <ul>
-                <li>Wednesday 07:00</li>
-                <li>{weatherData.description}</li>
+                <li>{weatherData.date}</li>
+                <li className="text-capitalize">{weatherData.description}</li>
             </ul>
             <div className="row">
                 <div className="col-6">
                     <div className="clearfix">
-                    <img src="https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png" 
-                    alt="Sunny"
+                    <img src={weatherData.iconUrl} 
+                    alt={weatherData.description}
                     height="60px" 
                     widith="60px" 
                     className="float-left" 
@@ -53,19 +57,19 @@ export default function Weather() {
                         <h3>Details</h3>
                         <li className="weatherDetails">
                             <div className="description">Feels like</div>
-                            <div className="descriptionDetail">{weatherData.feelsLike}</div>
+                            <div className="descriptionDetail">{weatherData.feels_like}°</div>
                             </li>
                         <li className="weatherDetails">
                             <div className="description">Humidity</div>
-                            <div className="descriptionDetail">{weatherData.humidity}</div>
+                            <div className="descriptionDetail">{weatherData.humidity}%</div>
                             </li>
                         <li className="weatherDetails">
                             <div className="description">Visibility</div>
-                            <div className="descriptionDetail">16.10 km</div>
+                            <div className="descriptionDetail">{weatherData.visibility/1000}{" "}km</div>
                         </li>
                         <li className="weatherDetails">
-                            <div className="description">UV Index</div> 
-                        <   div className="descriptionDetail">2 (Low)</div>
+                            <div className="description">Wind</div> 
+                        <   div className="descriptionDetail">{weatherData.wind}{" "}mph</div>
                         </li>
                     </ul>
                 </div>
@@ -75,7 +79,7 @@ export default function Weather() {
     } else {
    const apiKey = "5ef560c2739fa62b5e22bb83083603a3";
     let city="Broomfield";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}appid={apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
     
     return "Loading...";

@@ -10,7 +10,7 @@ export default function App() {
      <footer>
        This project was coded by Martha Vue and is open-sourced on{" "}
      <a href="https://github.com/MartyVue/weather-app-react"
-       target="_blank">Github</a>
+       target="_blank" rel="noopener noreferrer">Github</a>
        </footer>
        </div>
     </div>
