@@ -13,7 +13,7 @@ export default function Weather(props) {
             humidity: response.data.main.humidity,
             date: "Sunday 11:00",
             description: response.data.weather[0].description,
-            iconUrl: "https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png",
+            iconUrl: "https://cdn-icons.flaticon.com/png/512/1207/premium/1207634.png?token=exp=1640992303~hmac=372d4dc9b31ef6f6621aeb4d3a8b1e0a",
             feels_like: response.data.main.feels_like,
             visibility: response.data.visibility,
             wind: response.data.wind.speed,
