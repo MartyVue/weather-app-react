@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
@@ -7,7 +6,7 @@ import "./Weather.css";
 export default function Weather(props) {
     
     const [weatherData, setWeatherData] = useState({ ready: false });
-
+    const [city, setCity] = useState(props.defaultCity);
     function handleResponse(response) {
         console.log(response.data);
         setWeatherData({
@@ -24,17 +23,26 @@ export default function Weather(props) {
         });
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+    }
+
+    function handleCityChange(event) {
+        setCity(event.target.value);
+    }
+    
     if (weatherData.ready) {
-        console.log(weatherData);
     return (
         <div className="Weather">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col-9">
                         <input type="search" 
                         placeholder="Enter a city" 
                         className="form-control" 
-                        autoFocus="on" />
+                        autoFocus="on"
+                        onChange={handleCityChange}
+                        />
                     </div>
                     <div className="col-3">
                         <input 
@@ -44,13 +52,13 @@ export default function Weather(props) {
                     </div>
                 </div>
             </form>
-            <WeatherInfo />
+            <WeatherInfo data={weatherData}/>
            
         </div>
     );
     } else {
    const apiKey = "5ef560c2739fa62b5e22bb83083603a3";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
     
     return "Loading...";
