@@ -15,7 +15,7 @@ export default function Weather(props) {
             humidity: response.data.main.humidity,
             date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
-            icon: "https://cdn-icons.flaticon.com/png/512/1207/premium/1207634.png?token=exp=1640992303~hmac=372d4dc9b31ef6f6621aeb4d3a8b1e0a",
+            icon: response.data.weather[0].icon,
             feels_like: response.data.main.feels_like,
             visibility: response.data.visibility,
             wind: response.data.wind.speed,
