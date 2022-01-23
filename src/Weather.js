@@ -15,7 +15,7 @@ export default function Weather(props) {
             humidity: response.data.main.humidity,
             date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
-            iconUrl: "https://cdn-icons.flaticon.com/png/512/1207/premium/1207634.png?token=exp=1640992303~hmac=372d4dc9b31ef6f6621aeb4d3a8b1e0a",
+            icon: "https://cdn-icons.flaticon.com/png/512/1207/premium/1207634.png?token=exp=1640992303~hmac=372d4dc9b31ef6f6621aeb4d3a8b1e0a",
             feels_like: response.data.main.feels_like,
             visibility: response.data.visibility,
             wind: response.data.wind.speed,
@@ -23,8 +23,17 @@ export default function Weather(props) {
         });
     }
 
+    function search() {
+        const apiKey = "5ef560c2739fa62b5e22bb83083603a3";
+        // const apiKeyFlatIcon = "f3eeec87541833f456d48b7bb062f78c38bec455"
+        // let apiUrlFlatIcon = `https://api.flaticon.com/v2/items/icons`
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(handleResponse);
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
+        search();
     }
 
     function handleCityChange(event) {
@@ -57,10 +66,7 @@ export default function Weather(props) {
         </div>
     );
     } else {
-   const apiKey = "5ef560c2739fa62b5e22bb83083603a3";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-    
-    return "Loading...";
+        search();
+     return "Loading...";
     }
 }
