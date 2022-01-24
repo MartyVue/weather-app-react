@@ -1,7 +1,7 @@
 .Weather {
   font-family: Helvetica, Arial, sans-serif;
   border: 1px solid rgb(211, 208, 208);
-  padding: 10px;
+  padding: 30px;
   margin: 10px auto;
   border-radius: 4px;
   color: rgb(156, 156, 156);
@@ -65,10 +65,10 @@ h3 {
   margin-left: 5px;
 }
 
-.Weather img {
+.Weather canvas {
   height: 111px;
   margin-right: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
   display: inline-block;
 }
 
