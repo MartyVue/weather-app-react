@@ -49,6 +49,10 @@ h3 {
   padding: 4px;
 }
 
+.float-left {
+  float: left;
+}
+
 .temperature {
   font-weight: 400;
   font-size: 93px;
