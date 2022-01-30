@@ -5,6 +5,7 @@
   margin: 10px auto;
   border-radius: 4px;
   color: rgb(156, 156, 156);
+  width: 700px;
 }
 
 .Weather h1 {
@@ -70,7 +71,7 @@ h3 {
 }
 
 .Weather canvas {
-  margin-right: 2px;
+  margin-right: 34px;
   margin-top: 34px;
   display: inline-block;
 }
