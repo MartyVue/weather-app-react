@@ -55,8 +55,8 @@ h3 {
 
 .temperature {
   font-weight: 400;
-  font-size: 93px;
-  line-height: 64px;
+  font-size: 89px;
+  line-height: 147px;
   position: relative;
   top: -5px;
 }
@@ -70,8 +70,8 @@ h3 {
 }
 
 .Weather canvas {
-  margin-right: 30px;
-  margin-top: 20px;
+  margin-right: 2px;
+  margin-top: 34px;
   display: inline-block;
 }
 
